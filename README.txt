@@ -72,3 +72,18 @@ recordings
     - system적으로 Clock이 모든 행위의 단위
     - 처리 속도가 다른 논리회로 출력 판단
     - 디바이스들의 시간적인 동작 범위가 있으므로 무조건 빠르다고 될 일은 아니다.
+
+19/11/26
+  13) Bus Transfer Mechanism
+    - Bus system은 Clock에 맞추어 한 가지 종류의 신호만 존재
+    - Arbiter : Algorithm Policy에 의거하여 사용권을 부여
+  14) Timing 그리고 Spec 읽기
+    - 전달 지연 시간, 스위칭 특성
+    - 상승시간, 하강시간->물리적인 차이까지 System 구성 시 고려
+    - Timing Diagram->Timing Spec 해석으로 시간 제햔/최소시간 조절하여 Data를 잘 처리할 시간을 번다.
+
+19/11/27
+  15) Memory의 선정과 XIP
+    - Memory의 선정은 System 구성과 Performance에 영향력 행사
+    - RAM 휘발성/ROM 비휘발성
+    - XIP : 메모리상에서 직접 program/code 실행 (Execute In Place) Random Access가 가능해야한다.
