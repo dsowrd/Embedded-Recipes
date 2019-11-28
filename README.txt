@@ -87,3 +87,35 @@ recordings
     - Memory의 선정은 System 구성과 Performance에 영향력 행사
     - RAM 휘발성/ROM 비휘발성
     - XIP : 메모리상에서 직접 program/code 실행 (Execute In Place) Random Access가 가능해야한다.
+    - SRAM : 비싼 RAM, Random Access
+    - DRAM : 전하를 충전해줘야 Data 유실 방지
+    - PSRAM : SRAM처럼 쓰는 DRAM - Hardware적으로 충전
+    - ROM : 쓰고 지울 수 있다.
+    - NOR : 비쌈, 병렬 연결로 Random Access, XIP지원, 읽기 빠름
+    - NAND : 직렬 연결, XIP안됨, 쓰기와 지우기 빠름, 대용량 저장
+    - MCP(Multi chip package) : Flash memory와 RAM을 집적
+  16) RAM Memory의 물리적 동작
+    - RD pin : 읽기, WR pin : 쓰기, Address pin : 주소, Data pin : 데이터
+  17) 확장 to the CPU - How CPU works
+    - CPU에 약속된 신호를 주게 되면, CPU는 해당하는 일을 하게 된다.
+    - CU : 명령어 해석(Decoder)/동작지시 // ALU : 산술연산 // 레지스터 집합 : CPU의 내장 memory
+
+19/11/28
+  18) 일반적인 CPU의 동작 예(CORE)와 Pipe line
+    - PC(Program Counter) : CPU가 현재 실행하고 있는 instruction의 주소를 가리킴
+    - IR : PC가 가리키는 Instruction의 주소에서 읽어 온 instructio을 담아두는 기억장소
+    - Address Register : 현재 사용하는 Data의 주소
+    - Data Register : Address Register가 가리키는 주소의 값
+    - ACC : 연산의 결과값을 잠시 저장, 외부 사용자가 Access 불가
+    - Decoder : IR에 가져온 instruction을 해석하여 CU에 넘긴다.
+    - CU(Central Unit, Decoder에서 받아온 것을 각종 제어 신호로 변환하여 제어신호를 발생시킨다.
+    - ALU : 산술 연산을 담당하는 unit
+    - PC에 실행하려는 주소 -> Address Register에 PC에 들어있던 주소를 넣는다. -> 자동으로 Memory의 주소 Access
+      -> Instruction이 Memory로부터 읽어짐 -> Decoder로 흘러가 해석되는 동시에 PC는 다음을 실행하기 위해 증가
+      -> 내용 파악이 완료되면 CU가 제어 신호를 발생(ACC에는 임시 저장토록 제어 신호 발생)
+      -> CU가 발생시킨 제어 신호로 인해 값이 Data Register로 들어가고 ALU를 통해 연산을 할 지 도 모르니까 ACC에 임시 저장
+    - 3단계 Pipe line
+      1. instruction을 메모리로부터 가져오고(Fetch)
+      2. 가져온 Instruction을 해석하고 Register 값들도 확인(Decode)
+      3. Decoding된 Instruction을 실행(Execution)
+    - Pipe line 단계가 많을수록 좋아질 것이지만 너무 많은 stage는 효율성 면에서 성능이 나빠진다.
