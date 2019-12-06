@@ -119,3 +119,27 @@ recordings
       2. 가져온 Instruction을 해석하고 Register 값들도 확인(Decode)
       3. Decoding된 Instruction을 실행(Execution)
     - Pipe line 단계가 많을수록 좋아질 것이지만 너무 많은 stage는 효율성 면에서 성능이 나빠진다.
+
+19/12/02
+2. Microprocessor 아뜰리에(Atelier) - ARM을 파헤치자
+  1) Microprocessor 아뜰리에
+  2) ARM Inside
+    - ARM7TDMI 구조 : ARM Architecture
+    - Register Bank : ARM core에서 임시 저장공간을 담당하고 있다.
+    - Barrel Shifter : Shift, Rotation 실행, 결과 출력
+    - CISC는 Micro Programming 방식, RISC는 Hard Wired(기계어 한줄을 실행하기 위하여 그에 해당하는 논리회로를 구성하여 구현)방식으로 디자인
+  3) ARM mode와 Thumb mode
+    - 32bit RISC machine인 ARM에서 구시대 16bit bus line의 메모리를 사용하기위해 있는 mode - 두 번 fetch 해주어야해서 Performance에 영향을 끼친다.
+
+19/12/06
+  4) ARM 동작 Modes - 나는 어느 Mode를 써야 하나
+    - User(USR) : Normal Program execution mode
+    - System(SYS) : Run privileged operating system tasks
+    - Fast Interrupt Request(FIQ) : When a high priority (fast) interrupt is raised
+    - Interrupt Request(IRQ) : When a low priority (normal) interrupt is raised
+    - Supervisor(SVC) : A protected mode for the operating system, entered when a SWI instruction is executed
+    - Abort(ABT) : Used to handle memory access violations
+    - Undefined Instruction(UND) : Used to handle undefined instructions
+    - Normal Mode : USR / Mode 변경이 불가능
+    - Privileged Mode : SVC, SYS(Kernel에서 많이 사용), IRQ, FIQ(Interrupt), ABT, UND 
+                        / Interrupt의 사용 가능 유무 설정 가능, Mode 변경이 자유
